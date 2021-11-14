@@ -13,7 +13,7 @@ def home(request):
         request,
         'app/index.html',
         {
-            'title':'Home Page',
+            'title':'Katayama\'s App  Page',
             'year':datetime.now().year,
         }
     )
