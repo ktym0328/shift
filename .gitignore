@@ -364,3 +364,4 @@ FodyWeavers.xsd
 /env
 *.pyproj
 *.sqlite3
+*.sln
