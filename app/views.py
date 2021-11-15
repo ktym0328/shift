@@ -5,6 +5,8 @@ Definition of views.
 from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
+from django.views import generic
+from app.models import IncidentArticle
 
 def home(request):
     """Renders the home page."""
@@ -43,3 +45,14 @@ def about(request):
             'year':datetime.now().year,
         }
     )
+
+
+class IndexView(generic.ListView):
+    template_name = 'app/incident_index.html'
+    context_object_name = 'incident_list'
+    queryset = IncidentArticle.objects.all()
+
+
+class IncidentDetailView(generic.DetailView):
+    model = IncidentArticle
+    template_name = 'app/incident_detail.html'

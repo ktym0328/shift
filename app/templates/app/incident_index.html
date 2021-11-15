@@ -1,0 +1,17 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+{% if incident_list %}
+    {% for incident in incident_list %}
+<li>
+    <a href="{% url 'app:incident_detail' incident.id %}">{{ incident.subject }}</a>
+    {{ incident.create_date }}
+</li>
+    {% endfor %}
+{% endif %}
+
+{% endblock %}
+
+
+
