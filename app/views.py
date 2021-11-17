@@ -6,7 +6,7 @@ from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.views import generic
-from app.models import IncidentArticle
+from app.models import IncidentArticle, InquiryArticle, InformationArticle, OffmonitorArticle, RequestArticle
 
 def home(request):
     """Renders the home page."""
