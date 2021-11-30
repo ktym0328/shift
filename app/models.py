@@ -15,7 +15,15 @@ class SystemInfo(models.Model):
     system_name = models.CharField(max_length=400)
     system_detail = models.TextField(blank=True,null=True)
     system_enabled = models.BooleanField(default="1")
+    create_date = models.DateTimeField(auto_now_add=True)
+    modified_date = models.DateTimeField(auto_now=True)
 
+
+class Attachmaents(models.Model):
+    id = models.AutoField(primary_key=True)
+    attachment_name = models.TextField()
+    attachment_binary = models.BinaryField()
+    related_tablename = models.CharField(max_length=100, default=" ")
 
 
 class IncidentArticle(models.Model):
@@ -24,7 +32,7 @@ class IncidentArticle(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
     publish_start_date = models.DateTimeField(blank=True, null=True)
     publish_end_date = models.DateTimeField(blank=True, null=True)
-    lastupdate_date = models.DateTimeField(auto_now=True)
+    modified_date = models.DateTimeField(auto_now=True)
     escalate_date = models.DateTimeField(blank=True,null=True)
 
     subject = models.TextField(blank=True, null=True)
@@ -39,11 +47,12 @@ class IncidentArticle(models.Model):
 class InquiryArticle(models.Model):
     id = models.AutoField(primary_key=True)
     incident_id = models.CharField(max_length=200)
-    create_date = models.DateTimeField(default=timezone.now)
+    create_date = models.DateTimeField(auto_now_add=True)
     publish_start_date = models.DateTimeField()
     publish_end_date = models.DateTimeField()
-    lastupdate_date = models.DateTimeField(default=timezone.now)
+    modified_date = models.DateTimeField(auto_now=True)
     escalate_date = models.DateTimeField()
+    system = models.ForeignKey(SystemInfo, on_delete=models.PROTECT, blank=True, null=True)
 
     subject = models.TextField()
     detail = models.TextField()
@@ -52,11 +61,12 @@ class InquiryArticle(models.Model):
 class RequestArticle(models.Model):
     id = models.AutoField(primary_key=True)
     incident_id = models.CharField(max_length=200)
-    create_date = models.DateTimeField(default=timezone.now)
+    create_date = models.DateTimeField(auto_now_add=True)
     publish_start_date = models.DateTimeField()
     publish_end_date = models.DateTimeField()
-    lastupdate_date = models.DateTimeField(default=timezone.now)
+    modified_date = models.DateTimeField(auto_now=True)
     escalate_date = models.DateTimeField()
+    system = models.ForeignKey(SystemInfo, on_delete=models.PROTECT, blank=True, null=True)
 
     subject = models.TextField()
     detail = models.TextField()
@@ -66,10 +76,11 @@ class RequestArticle(models.Model):
 class OffmonitorArticle(models.Model):
     id = models.AutoField(primary_key=True)
     incident_id = models.CharField(max_length=200)
-    create_date = models.DateTimeField(default=timezone.now)
+    create_date = models.DateTimeField(auto_now_add=True)
     publish_start_date = models.DateTimeField()
     publish_end_date = models.DateTimeField()
-    lastupdate_date = models.DateTimeField(default=timezone.now)
+    modified_date = models.DateTimeField(auto_now=True)
+    system = models.ForeignKey(SystemInfo, on_delete=models.PROTECT, blank=True, null=True)
 
     subject = models.TextField()
     detail = models.TextField()
@@ -79,10 +90,11 @@ class OffmonitorArticle(models.Model):
 class InformationArticle(models.Model):
     id = models.AutoField(primary_key=True)
     incident_id = models.CharField(max_length=200)
-    create_date = models.DateTimeField(default=timezone.now)
+    create_date = models.DateTimeField(auto_now_add=True)
     publish_start_date = models.DateTimeField()
     publish_end_date = models.DateTimeField()
-    lastupdate_date = models.DateTimeField(default=timezone.now)
+    modified_date = models.DateTimeField(auto_now=True)
+    system = models.ForeignKey(SystemInfo, on_delete=models.PROTECT, blank=True, null=True)
 
     subject = models.TextField()
     detail = models.TextField()

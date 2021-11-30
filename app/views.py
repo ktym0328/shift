@@ -1,4 +1,4 @@
-"""
+﻿"""
 Definition of views.
 """
 
@@ -6,48 +6,49 @@ from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.views import generic
+from django.views.generic.base import TemplateView
 from app.models import IncidentArticle, InquiryArticle, InformationArticle, OffmonitorArticle, RequestArticle
 
-def home(request):
-    """Renders the home page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/index.html',
-        {
-            'title':'Katayama\'s App  Page',
-            'year':datetime.now().year,
-        }
-    )
 
-def contact(request):
-    """Renders the contact page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/contact.html',
-        {
-            'title':'Contact',
-            'message':'Your contact page.',
-            'year':datetime.now().year,
-        }
-    )
+class home(TemplateView):
+    template_name = 'app/index.html'
 
-def about(request):
-    """Renders the about page."""
-    assert isinstance(request, HttpRequest)
-    return render(
-        request,
-        'app/about.html',
-        {
-            'title':'About',
-            'message':'Your application description page.',
-            'year':datetime.now().year,
-        }
-    )
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'katayama\'s App Page.'
+        context['year'] = datetime.now()
+
+        return context
 
 
-class IndexView(generic.ListView):
+class contact(TemplateView):
+    template_name = 'app/contact.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = {
+            "title": "Cotntact",
+            "message": "Your contact page.",
+            "year": datetime.now().year,
+            }
+
+        return context
+
+
+class about(TemplateView):
+   template_name = 'app/about.html'
+
+   def get_context_data(self, **kwargs):
+       context = super().get_context_data(**kwargs)
+       context = {
+           'title': 'About',
+           'message': 'アプリケーションに関する詳細情報を記載',
+           'year': datetime.now().year          
+           }
+       return context
+
+
+class IncidentIndexView(generic.ListView):
     template_name = 'app/incident_index.html'
     context_object_name = 'incident_list'
     queryset = IncidentArticle.objects.all()

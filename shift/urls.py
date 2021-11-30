@@ -7,13 +7,15 @@ from django.urls import path
 from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls.conf import include
-from app import forms, views
+from django.views.generic import View
+from app import views,forms
+
 
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('contact/', views.contact, name='contact'),
-    path('about/', views.about, name='about'),
+    path('', views.home.as_view(), name='home'),
+    path('contact/', views.contact.as_view(), name='contact'),
+    path('about/', views.about.as_view(), name='about'),
     path('login/',
          LoginView.as_view
          (

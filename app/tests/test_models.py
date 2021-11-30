@@ -1,5 +1,5 @@
 from django.test import TestCase
-from app.models import IncidentArticle, SystemInfo
+from app.models import Attachmaents, IncidentArticle, SystemInfo
 
 class SystemInfoModelTests(TestCase):
 
@@ -19,6 +19,14 @@ class SystemInfoModelTests(TestCase):
         sysinfo.save()
         saved_systeminfo = SystemInfo.objects.all()
         self.assertEqual(saved_systeminfo.count(),4)
+
+
+class AttachmentModelTests(TestCase):
+
+    def attachment_is_empty(self):
+        saved_attachment = Attachmaents.objects.all()
+        self.assertEqual(saved_attachment.count(), 0)
+
 
 class IncidentArticleModelTests(TestCase):
 
