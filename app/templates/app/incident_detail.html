@@ -1,11 +1,11 @@
-{% extends "app/layout.html" %}
+﻿{% extends "app/layout.html" %}
 
 {% block content %}
 
-<h1>{{ incident.subject }}</h1>
-<h2>{{ incident.create_date }}</h2>
-<h3>{{ incident_history }}</h3>
-
+<h1>{{ incident_detail.subject }}</h1>
+<h2>{{ incident_detail.create_date }}</h2>
+<h3>{{ incident_detail.history }}</h3>
+<hr>詳細ページ
 {% endblock %}
 
 

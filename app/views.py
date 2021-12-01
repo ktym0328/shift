@@ -6,7 +6,8 @@ from datetime import datetime
 from django.shortcuts import render
 from django.http import HttpRequest
 from django.views import generic
-from django.views.generic.base import TemplateView
+from django.views.generic import TemplateView, DetailView,ListView
+
 from app.models import IncidentArticle, InquiryArticle, InformationArticle, OffmonitorArticle, RequestArticle
 
 
@@ -48,12 +49,13 @@ class about(TemplateView):
        return context
 
 
-class IncidentIndexView(generic.ListView):
+class IncidentIndexView(ListView):
     template_name = 'app/incident_index.html'
     context_object_name = 'incident_list'
     queryset = IncidentArticle.objects.all()
 
 
-class IncidentDetailView(generic.DetailView):
+class IncidentDetailView(DetailView):
     model = IncidentArticle
+    context_object_name = "incident_detail"
     template_name = 'app/incident_detail.html'

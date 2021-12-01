@@ -8,7 +8,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.urls.conf import include
 from django.views.generic import View
-from app import views,forms
+from app import views, forms
 
 
 

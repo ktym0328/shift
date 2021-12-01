@@ -43,6 +43,9 @@ class IncidentArticle(models.Model):
     alert_count = models.IntegerField(blank=True,null=True)
     system = models.ForeignKey(SystemInfo, on_delete=models.PROTECT, blank=True, null=True)
 
+    def __str__(self):
+        return self.subject
+
 
 class InquiryArticle(models.Model):
     id = models.AutoField(primary_key=True)

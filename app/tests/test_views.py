@@ -4,7 +4,7 @@ when you run "manage.py test".
 """
 
 import django
-from django.test import TestCase
+from django.test import TestCase, testcases
 from django.urls import reverse, resolve
 from app.views import home
 
@@ -20,4 +20,11 @@ class HomeTests(TestCase):
     def test_home_url_resolves_home_view(self):
         view = resolve('/')
         self.assertEquals(view.func, home)
+
+
+class IncidentTests(TestCase):
+    def test_incident_view_status_code(self):
+        url = reverse('app/')
+        response = self.client.get(url)
+        self.assertEquals(response.status_code, 200)
 
