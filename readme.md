@@ -5,7 +5,7 @@
 個人の好みで作成しているので汎用的ではないです。
 
 ## メインテーブル
-テーブル名: *incident_info*
+テーブル名: *incidents_info*
 
 すべての情報を一元的に登録するテーブル
 
@@ -35,7 +35,7 @@ last_modified|datedatetime auto update on update|更新日|
 の組み合わせとなるため、付属側にincident_idを参照させている
 
 ###  ステータス情報
-テーブル名; *status_info*
+テーブル名; *statuses_info*
 
 | フィールド名 | フィールド定義 | フィールド情報 |
 |:---|:---|:---|
@@ -47,7 +47,7 @@ last_modified|datedatetime auto update on update|更新日|
 
 
 ### システム情報
-テーブル名; *system_info*
+テーブル名; *systems_info*
 
 | フィールド名 | フィールド定義 | フィールド情報 |
 |:---|:---|:---|
@@ -59,6 +59,8 @@ last_modified|datedatetime auto update on update|更新日|
 |memo|text|備考|
 
 ### カテゴリ
+テーブル名; *categories_info*
+
 | フィールド名 | フィールド定義 | フィールド情報 |
 |:---|:---|:---|
 |id|auto increment, primary key|カテゴリID|
@@ -68,6 +70,9 @@ last_modified|datedatetime auto update on update|更新日|
 |memo|text|備考|
 
 ### 添付ファイル
+テーブル名; *attachments_info*
+
+
 | フィールド名 | フィールド定義 | フィールド情報 |
 |:---|:---|:---|
 |id|auto increment, primary key|添付ファイルID|
@@ -78,7 +83,7 @@ last_modified|datedatetime auto update on update|更新日|
 |memo|text|備考|
 
 ### エスカレーション情報
-テーブル名; *escalate_info*
+テーブル名; *escalates_info*
 
 | フィールド名 | フィールド定義 | フィールド情報 |
 |:---|:---|:---|
