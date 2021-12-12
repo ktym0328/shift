@@ -8,7 +8,7 @@ from django.http import HttpRequest
 from django.views import generic
 from django.views.generic import TemplateView, DetailView,ListView
 
-from app.models import IncidentArticle, InquiryArticle, InformationArticle, OffmonitorArticle, RequestArticle
+from app.models import statuses_info, incidents_info, categories_info, systems_info, escalates_info, attachments_info, templates_info
 
 
 class home(TemplateView):
@@ -48,14 +48,52 @@ class about(TemplateView):
            }
        return context
 
+class mainte_list(TemplateView):
+    template_name = 'app/mainte_list.html'
 
-class IncidentIndexView(ListView):
-    template_name = 'app/incident_index.html'
-    context_object_name = 'incident_list'
-    queryset = IncidentArticle.objects.all()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = {
+            'title': '非監視依頼',
+            'message': '非監視依頼を管理するページ',
+            'year': datetime.now().year
+            }
+        return context
+
+class incident_list(TemplateView):
+    template_name = 'app/incident_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = {
+            'title': '故障チケット',
+            'message': '故障チケットを管理するページ',
+            'year': datetime.now().year
+            }
+        return context
 
 
-class IncidentDetailView(DetailView):
-    model = IncidentArticle
-    context_object_name = "incident_detail"
-    template_name = 'app/incident_detail.html'
+class inquiry_list(TemplateView):
+    template_name = 'app/inquiry_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = {
+            'title': '問い合わせチケット',
+            'message': '問い合わせを管理するページ',
+            'year': datetime.now().year
+            }
+        return context
+
+class request_list(TemplateView):
+    template_name = 'app/request_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = {
+            'title': '作業依頼チケット',
+            'message': '作業依頼を管理するページ',
+            'year': datetime.now().year
+            }
+        return context
+

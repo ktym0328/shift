@@ -369,3 +369,6 @@ FodyWeavers.xsd
 /app/migrations/0003_attachmaents.py
 /app/migrations/0002_auto_20211120_1804.py
 /app/migrations/0001_initial.py
+/app/migrations/0002_systems_info.py
+/app/migrations/0003_auto_20211210_1852.py
+/app/migrations

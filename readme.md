@@ -43,6 +43,7 @@ last_modified|datedatetime auto update on update|更新日|
 |status_name|char(300), not null|ステータス名|
 |status_enable|boolean, not null default=true|有効/無効フラグ|
 |create_date|date|登録日|
+|modified_date|date|更新日|
 |memo|text|備考|
 
 

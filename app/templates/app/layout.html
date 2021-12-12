@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} - Home Application</title>
+    <title>{{ title }} - 業務引き継ぎアプリ</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/bootstrap.min.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'app/content/site.css' %}" />
@@ -13,16 +13,19 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">MyApplication</a>
+            <a class="navbar-brand" href="#">引き継ぎアプリ</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav nav-tabs">
-                    <li class="nav-item"><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="{% url 'about' %}">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="{% url 'contact' %}">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="{% url 'app:IncidentIndex' %}">故障</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'home' %}">ホーム</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'about' %}">サイトについて</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'contact' %}">連絡先</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'app:incident_list' %}">故障</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'app:inquiry_list' %}">問い合わせ</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'app:request_list' %}">依頼作業</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{% url 'app:mainte_list' %}">非監視依頼</a></li>
 
                 </ul>
                 {% include 'app/loginpartial.html' %}
@@ -34,7 +37,7 @@
 {% block content %}{% endblock %}
         <hr/>
         <footer>
-            <p>&copy; {{ year }} - My Django Application</p>
+            <p>&copy; {{ year }} - katayama shift app</p>
         </footer>
     </div>
 
