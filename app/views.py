@@ -3,8 +3,6 @@ Definition of views.
 """
 
 from datetime import datetime
-from django.shortcuts import render
-from django.http import HttpRequest
 from django.views import generic
 from django.views.generic import TemplateView, DetailView,ListView
 
@@ -96,4 +94,52 @@ class request_list(TemplateView):
             'year': datetime.now().year
             }
         return context
+
+
+class system_list(ListView):
+    template_name = 'app/control_list.html'
+    model = systems_info
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+
+        page_context = {
+            'title': 'システム情報管理',
+            'message': 'システム情報を管理するためのページ',
+            'year': datetime.now().year
+            }
+        page_context = dict(data, **page_context)
+        return page_context
+
+class system_detail(DetailView):
+    template_name = 'app/system_detail.html'
+    model = systems_info
+
+
+ 
+ class category_list(TemplateView):
+    template_name = 'app/control_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = {
+            'title': 'カテゴリ管理',
+            'message': 'カテゴリ情報を管理するためのページ',
+            'year': datetime.now().year
+            }
+        return context
+
+class status_list(TemplateView):
+    template_name = 'app/control_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = {
+            'title': 'ステータス管理',
+            'message': 'ステータス情報を管理するためのページ',
+            'year': datetime.now().year
+            }
+        return context
+
+
 

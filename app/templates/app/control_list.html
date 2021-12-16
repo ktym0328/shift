@@ -1,0 +1,28 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<table class="table">
+    <thead>
+        <tr><th>{{ title }}</th></tr>
+    </thead>
+    <tbody>
+        <tr scope="col">
+            <th scope="col">システム名</th>
+            <th scope="col">システム有効/無効</th>
+        </tr>
+        {% for control in object_list   %}
+        
+        <tr>
+            <td>{{ control.system_name}}</td>
+            <td>{{ control.system_enable }}</td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
