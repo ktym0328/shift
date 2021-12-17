@@ -117,7 +117,7 @@ class system_detail(DetailView):
 
 
  
- class category_list(TemplateView):
+class category_list(TemplateView):
     template_name = 'app/control_list.html'
 
     def get_context_data(self, **kwargs):

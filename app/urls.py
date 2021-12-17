@@ -10,6 +10,7 @@ urlpatterns = [
     path('system_list', views.system_list.as_view(), name='system_list'),
     path('category_list', views.category_list.as_view(), name='category_list'),
     path('status_list', views.status_list.as_view(), name='status_list'),
+    path('system/detail/<int:pk>/', views.system_detail.as_view(), name='system_detail'),
 
 
     ]
