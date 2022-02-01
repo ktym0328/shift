@@ -11,6 +11,7 @@ urlpatterns = [
     path('category_list', views.category_list.as_view(), name='category_list'),
     path('status_list', views.status_list.as_view(), name='status_list'),
     path('system/detail/<int:pk>/', views.system_detail.as_view(), name='system_detail'),
+    path('system/create', views.system_create.as_view(), name='system_create'),
 
 
     ]

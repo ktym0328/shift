@@ -4,7 +4,8 @@ Definition of views.
 
 from datetime import datetime
 from django.views import generic
-from django.views.generic import TemplateView, DetailView,ListView
+from django.views.generic import TemplateView, DetailView,ListView, CreateView
+from django.urls import reverse
 
 from app.models import statuses_info, incidents_info, categories_info, systems_info, escalates_info, attachments_info, templates_info
 
@@ -97,7 +98,7 @@ class request_list(TemplateView):
 
 
 class system_list(ListView):
-    template_name = 'app/control_list.html'
+    template_name = 'app/system_list.html'
     model = systems_info
 
     def get_context_data(self, **kwargs):
@@ -115,7 +116,12 @@ class system_detail(DetailView):
     template_name = 'app/system_detail.html'
     model = systems_info
 
+class system_create(CreateView):
+    model = systems_info
+    fields = ['system_name', 'system_memo', 'system_enable','system_code']
 
+    def get_success_url(self):
+        return reverse('system_list')
  
 class category_list(TemplateView):
     template_name = 'app/control_list.html'

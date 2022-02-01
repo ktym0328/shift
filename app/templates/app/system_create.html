@@ -1,0 +1,37 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<table class="table">
+    <thead>
+        <tr><th>{{ title }}</th></tr>
+    </thead>
+    <tbody>
+        <tr scope="col">
+            <th scope="col">項目</th>
+            <th scope="col">データ</th>
+        </tr>
+        <tr>
+            <td>システム名</td>
+            <td>{{ object.system_name}}</td>
+        </tr>
+        <tr>
+            <td>システム名</td>
+            <td>{{ object.system_memo}}</td>
+        </tr>
+        <tr>
+            <td>システムコード</td>
+            <td>{{ object.system_code }}</td>
+        </tr>
+        <tr>
+            <td>システム有効 /無効</td>
+            <td>{{ object.system_enable }}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+{% endblock %}
